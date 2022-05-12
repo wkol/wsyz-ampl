@@ -33,7 +33,7 @@ minimize Total_Cost:
 # ograniczenie: transport do sklepów + należy zachować minimalne zapasy każdego z warzyw  np. 10% średniej sprzedaży w tygodniu
 subject to Store_Weekly_Supply {v in VEGETABLES, s in STORES, n in 1..T}:
 	sum {w in WAREHOUSES}
-		weekly_transport_to_stores[n, w, s, v] = 1.1 * weekly_sales_forecast[n, s, v];
+		weekly_transport_to_stores[n, w, s, v] >= 1.1 * weekly_sales_forecast[n, s, v];
 	
 # ograniczenie: warehouse supply
 subject to Warehouse_Supply {w in WAREHOUSES, v in VEGETABLES}:
